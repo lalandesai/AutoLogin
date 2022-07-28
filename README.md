@@ -1,7 +1,7 @@
 # AutoLogin
 A chrome extension to automize the login process. It is specially made for [Atmiya University](https://atmiyauni.ac.in/ "Atmiya University") students and faculties.
 
-##Usage Guide
+## Usage Guide
 - Fill in your username and password and click on the save button and then click on the connect button.
 - The output will be shown on the output box. You can also hide the output box.
 - To enable automatic log-in when chrome is open enable the 'Login automatically' function.
