@@ -1,17 +1,16 @@
 var saveButton = document.getElementById("saveButton");
 const connectButton = document.getElementById("connectButton");
 const autoLoginCheckbox = document.getElementById("autoLoginCheckbox");
+const hideOutputCheckbox = document.getElementById("hideOutputCheckbox");
+
 const usernameTextbox = document.getElementById("usernameTextbox");
 const passwordTextbox = document.getElementById("passwordTextbox");
-const githubLink = document.getElementById("githubLink");
+const frame = document.getElementById("frame");
 
 
 GetCredentials();
 
-githubLink.addEventListener("click", function () {
-    shell.openExternal("github.com/lalan-desai");
-}
-);
+
 
 usernameTextbox.addEventListener('input', function () {
     connectButton.disabled = true;
@@ -28,6 +27,17 @@ autoLoginCheckbox.addEventListener('change', function () {
     chrome.storage.local.set({ 'autoLogin': autoLoginCheckbox.checked });
 });
 
+hideOutputCheckbox.addEventListener('change', function () {
+    chrome.storage.local.set({ 'hideOutput': hideOutputCheckbox.checked });
+    if (hideOutputCheckbox.checked) {
+        frame.style.display = 'none';
+    }
+    else {
+        frame.style.display = 'block';
+        document.getElementById("framewindow").remove();
+        document.getElementById("frame").innerHTML += "<iframe id='framewindow' name='formresponse'></iframe>";
+    }
+});
 
 
 function sleep(time) {
@@ -58,18 +68,35 @@ async function GetCredentials() {
             pwd = result['password'];
         }
     });
+
+
+    await sleep(10);
+    document.getElementById("frame").innerHTML += "<form id='loginForm' style='display:none' target='formresponse' action='http://10.9.150.45:8090/login.xml'method='POST'><input type='text' name='mode' value='191' /><input type='text' name='username' value='" + uname + "' /><input type='text' name='password' value='" + pwd + "' /><input type='text' name='a' value='" + new Date().getTime() + "' /><input type='text' name='producttype' value='0' /><input type='submit'></form>";
+
     chrome.storage.local.get('autoLogin', function (result) {
         if (result['autoLogin'] == null) {
-            autoLoginCheckbox.checked = true;
+            autoLoginCheckbox.checked = false;
         }
         else {
             autoLoginCheckbox.checked = result['autoLogin'];
         }
-
     });
-    await sleep(10);
-    document.getElementById("frame").innerHTML += "<form id='loginForm' style='display:none' target='formresponse' action='http://192.168.1.9:3000'method='POST'><input type='text' name='mode' value='191' /><input type='text' name='username' value='" + uname + "' /><input type='text' name='password' value='" + pwd + "' /><input type='text' name='a' value='" + new Date().getTime() + "' /><input type='text' name='producttype' value='0' /><input type='submit'></form>";
-    document.getElementById("frame").innerHTML += "<iframe id='framewindow' name='formresponse'></iframe>";
+    chrome.storage.local.get('hideOutput', function (result) {
+        if (result['hideOutput'] == null) {
+            hideOutputCheckbox.checked = false;
+            document.getElementById("frame").innerHTML += "<iframe id='framewindow' name='formresponse'></iframe>";
+        }
+        else {
+            hideOutputCheckbox.checked = result['hideOutput'];
+            if (result['hideOutput']) {
+                document.getElementById("frame").innerHTML += "<iframe id='framewindow' name='formresponse' style='display:none'></iframe>";
+                frame.style.display = 'none';
+            }
+            else {
+                document.getElementById("frame").innerHTML += "<iframe id='framewindow' name='formresponse'></iframe>";
+            }
+        }
+    });
 }
 
 connectButton.addEventListener("click", d => {
@@ -77,23 +104,14 @@ connectButton.addEventListener("click", d => {
 });
 
 
-
-
-
-
 async function Connect() {
     if (usernameTextbox.value == "" || passwordTextbox.value == "") {
-        usernameTextbox.classList.remove("run-animation");
-        passwordTextbox.classList.remove("run-animation");
-        
-        await sleep(200);
+        alert("Please enter username and password");
     }
     else {
         var form = document.getElementById("loginForm");
         form.submit();
     }
-
-
 }
 
 saveButton.addEventListener("click", e => {

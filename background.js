@@ -20,7 +20,7 @@ chrome.runtime.onStartup.addListener(function () {
                 redirect: 'follow'
             };
 
-            fetch("http://192.168.1.9:3000", requestOptions)
+            fetch("http://10.9.150.45:8090/login.xml", requestOptions)
                 .then(response => response.text())
                 .then(result => console.log(result))
                 .catch(error => console.log('error', error));

@@ -1,18 +1,20 @@
 h1 {
-    color: rgb(116, 109, 155);
+    color: rgb(0, 132, 255);
     margin-bottom: -15px;
+    margin-top: auto;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 h5 {
-    margin-bottom: 0px;
+    margin-bottom: 3px;
 }
 
 body {
     color: lightgray;
-    min-height: 500px;
+
     min-width: 300px;
     font-size: medium;
-    background: #323232;
+    background: #313131;
     font-family: Helvetica;
 }
 
@@ -20,7 +22,6 @@ button {
     cursor: pointer;
     outline: 0;
     color: #fff;
-
     background-color: #0d6efd;
     display: inline-block;
     font-weight: 400;
@@ -39,18 +40,15 @@ button:hover {
     border-color: #0a58ca;
 }
 
-button:focus {
-    background-color: #0d4aa7;
-}
+
 
 label {
     color: pink;
 }
 
 a {
-    color: #0a58ca;
+    color: #ffffff;
 }
-
 
 input:not([type='checkbox']) {
     padding: 6px 10px;
@@ -61,31 +59,6 @@ input:not([type='checkbox']) {
     background-color: #424242;
     font-size: 15px;
     color: aliceblue;
-
-
-}
-
-
-.run-animation {
-    animation: shake 0.2s ease-in-out 0s 2;
-}
-
-@keyframes shake {
-    0% {
-        margin-left: 0rem;
-    }
-
-    25% {
-        margin-left: 0.5rem;
-    }
-
-    75% {
-        margin-left: -0.5rem;
-    }
-
-    100% {
-        margin-left: 0rem;
-    }
 }
 
 iframe {
