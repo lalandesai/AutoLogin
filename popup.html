@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel='stylesheet' href='style.css'>
+</head>
+
+<body>
+    <center>
+        <h1>AutoLogin</h1>
+        <h5>Specially made for Atmiya university students and faculties.</h5>
+        <div>
+            <center>Made with<font face="Arial">&#10084;&#65039;</font>by <a id="githubLink" target="_blank"
+                    href="http://github.com/lalan-desai">@lalan-desai</a></center>
+        </div>
+        <hr>
+    </center>
+    <fieldset>
+        <legend>Credentials</legend>
+        <label>Username: <input type='text' name='username' placeholder='Enter Username' id='usernameTextbox'> </label>
+        <label>Password: <input type='password' name='password' placeholder='Enter Password' id='passwordTextbox'> </label>
+
+        <center>
+            <button type='button' id='saveButton'>Save</button>
+            <button type='button' id='connectButton'>Connect</button>
+        </center>
+    </fieldset>
+
+    <fieldset>
+        <legend>Configs</legend>
+        <input type='checkbox' name='autoLogin' id='autoLoginCheckbox'> <label for='autoLoginCheckbox'>Login Automatically</label>
+    </fieldset>
+
+
+    <fieldset id="frame">
+        <legend>Output</legend>
+    </fieldset>
+
+
+
+    <script src='main.js'></script>
+
+</body>
+
+</html>
