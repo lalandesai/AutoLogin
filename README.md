@@ -11,3 +11,6 @@ A chrome extension to automize the login process. It is specially made for [Atmi
 2. Go to the chrome extension page.
 3. Click on the Load Unpacked button in the upper left corner.
 4. Select the extracted folder.
+
+
+### You can also install it from the [Chrome Extension Web Store](https://chrome.google.com/webstore/detail/cbiimajdngabfaianbpckiblnbeeohme?authuser=0&hl=en).
